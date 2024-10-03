@@ -1,30 +1,75 @@
-import { useNavigate } from 'react-router-dom';
-
-import classes from './EventForm.module.css';
-
-function EventForm({ method, event }) {
+import { useNavigate } from "react-router-dom";
+import classes from "./EventForm.module.css";
+import { addNewEvent } from "../store/eventActions";
+import { useDispatch, useSelector } from "react-redux";
+import { EditEvent } from "../store/eventActions";
+function EventForm({ method, eventId }) {
   const navigate = useNavigate();
+  const events = useSelector((state) => state.events.events);
+  const event = events.find((event) => event.id == eventId);
+  const dispatch = useDispatch();
   function cancelHandler() {
-    navigate('..');
+    navigate("/events/allevents");
   }
-
+  function submitHandler(event) {
+    event.preventDefault();
+    const fd = new FormData(event.target);
+    const newEvent = Object.fromEntries(fd.entries());
+    dispatch(addNewEvent(newEvent));
+    navigate("/events/allevents");
+  }
+  function editHandler(event) {
+    event.preventDefault();
+    const fd = new FormData(event.target);
+    const newEvent = Object.fromEntries(fd.entries());
+    dispatch(EditEvent(eventId, newEvent));
+    navigate("/events/allevents/");
+  }
   return (
-    <form className={classes.form}>
+    <form
+      className={classes.form}
+      onSubmit={method == "add" ? submitHandler : editHandler}
+    >
       <p>
         <label htmlFor="title">Title</label>
-        <input id="title" type="text" name="title" required />
+        <input
+          id="title"
+          type="text"
+          name="title"
+          required={method == "add" ? true : false}
+          placeholder={method==='edit'?event.title:''}
+          
+        />
       </p>
       <p>
         <label htmlFor="image">Image</label>
-        <input id="image" type="url" name="image" required />
+        <input
+          id="image"
+          type="url"
+          name="image"
+          required={method == "add" ? true : false}
+          placeholder={method==='edit'?event.image:''}
+        />
       </p>
       <p>
         <label htmlFor="date">Date</label>
-        <input id="date" type="date" name="date" required />
+        <input
+          id="date"
+          type="date"
+          name="date"
+          required={method == "add" ? true : false}
+          placeholder={method==='edit'?event.date:''}
+        />
       </p>
       <p>
         <label htmlFor="description">Description</label>
-        <textarea id="description" name="description" rows="5" required />
+        <textarea
+          id="description"
+          name="description"
+          rows="5"
+          required={method == "add" ? true : false}
+          placeholder={method==='edit'?event.description:''}
+        />
       </p>
       <div className={classes.actions}>
         <button type="button" onClick={cancelHandler}>

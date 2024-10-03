@@ -1,11 +1,1 @@
-{
-  "events": [
-    {
-      "id": "e1",
-      "title": "A dummy event",
-      "date": "2023-02-22",
-      "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-      "description": "Join this amazing event and connect with fellow developers."
-    }
-  ]
-}
+{"events":[{"title":"Cats Event","image":"https://www.sanicat.com/wp-content/uploads/2023/11/how-do-cats-find-their-way-home.jpg","date":"2024-11-11","description":"enjoy Cats Event with more than 100 cats !","id":"e28eb528-8f68-4802-a3f0-ea69ce30d74e"}]}
