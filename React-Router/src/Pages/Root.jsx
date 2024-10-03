@@ -1,10 +1,9 @@
 import { Outlet } from "react-router-dom"
-import classes from './Root.module.css'
-import MainNavigationBar from "../components/MainNavigationBar"
+import MainNavigation from "../components/MainNavigation"
 export default function RootLayout(){
     return(
         <>
-        <MainNavigationBar/>
+        <MainNavigation/>
         <main >
         <Outlet/>
 
