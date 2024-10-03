@@ -5,7 +5,7 @@ export default function RootLayout(){
     return(
         <>
         <MainNavigationBar/>
-        <main className={classes.content}>
+        <main >
         <Outlet/>
 
         </main>
