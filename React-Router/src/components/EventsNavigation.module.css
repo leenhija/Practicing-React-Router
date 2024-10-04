@@ -10,9 +10,10 @@
 }
 
 .list a {
-  background-color: var(--color-gray-500);
-  color: var(--color-gray-900);
+  background-color: var(--neutral-dark);
+  color: var(--primary-color-one);
   padding: 0.5rem 1.5rem;
+  border: solid 2px var(--primary-color-one);
   border-radius: 4px;
   text-decoration: none;
 }
@@ -20,5 +21,6 @@
 .list a:hover,
 .list a:active,
 .list a.active {
-  background-color: var(--color-primary-600);
+  background-color: var(--primary-color-one);
+  color: white;
 }

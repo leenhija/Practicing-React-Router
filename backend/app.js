@@ -2,7 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 
 const eventRoutes = require('./routes/events');
-
+const usersRouter=require('./routes/users')
 const app = express();
 
 app.use(bodyParser.json());
@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/events', eventRoutes);
-
+app.use('/users', usersRouter)
 app.use((error, req, res, next) => {
   const status = error.status || 500;
   const message = error.message || 'Something went wrong.';

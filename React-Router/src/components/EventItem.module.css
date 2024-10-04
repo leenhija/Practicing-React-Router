@@ -28,5 +28,8 @@
 .actions button {
   background-color: transparent;
   border: none;
-  color: var(--color-primary-800);
+  color: var(--primary-color-one);
+}
+.actions a{
+  color: var(--primary-color-two);
 }

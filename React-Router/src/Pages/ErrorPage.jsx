@@ -1,12 +1,15 @@
 import MainNavigation from "../components/MainNavigation";
+import classes from './ErrorPage.module.css'
 export default function ErrorPage() {
   return (
     <>
       <MainNavigation />
-      <main>
-        <h1>An Error occurred!</h1>
-        <p>Could not find this page</p>
-      </main>
+      <div className={classes.maindiv}>
+        <h3>OOPS! PAGE NOT FOUND</h3>
+        <h1>404</h1>
+        <h2>WE ARE SORRY, BUT THE PAGE</h2>
+        <h2>YOU REQUESTED WAS NOT FOUND</h2>
+      </div>
     </>
   );
 }

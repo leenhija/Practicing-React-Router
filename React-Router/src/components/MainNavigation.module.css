@@ -1,25 +1,43 @@
 .header {
-  max-width: 60rem;
+  max-width: 100%;
   margin: auto;
   padding: 2rem;
   display: flex;
   justify-content:flex-start;
-  gap:calc(60rem/3)
+  align-items: center;
+  gap:calc(100%/3.5)
 }
-.header h2{
-  margin-top: -5px;
+.header div{
+  display: flex;
+  flex-direction: row;
+}
+
+.header img{
+width: 100px;
+height: 90px;
+margin-top: -10px;
 }
 .list {
   display: flex;
   gap: 1rem;
+
 }
 
 .list a {
   text-decoration: none;
-  color: var(--color-primary-400);
+  color: white;
+  font-size: 16px;
 }
 
 .list a:hover,
 .list a.active {
-  color: var(--color-primary-800);
+  color: var(--primary-color-one);
 }
+.regester{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+

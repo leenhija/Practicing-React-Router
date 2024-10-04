@@ -10,7 +10,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #27284E;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -37,6 +37,14 @@
   --color-primary-700: #fbc14d;
   --color-primary-800: #fab833;
   --color-primary-900: #f6ad1b;
+  --primary-color-one:#EC6C6C;
+  --primary-color-two:#EADFDF;
+  --secondary-color-one:#CAF1F9;
+  --secondary-color-two:#2EC5D2;
+  --accent-one:#796360;
+  --accent-two:#503E3A;
+  --neutral-dark:#27284E;
+
 }
 
 body {
@@ -51,4 +59,34 @@ ul {
 main {
   margin: 2rem auto;
   text-align: center;
+}
+.primary_button{
+  color: var(--secondary-color-one);
+  background-color: var(--primary-color-one);
+  outline: none;
+  border: none;
+ padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  font-weight: 400;
+  text-decoration: none;
+  cursor:pointer;
+
+}
+.secondary_button{
+  color: var(--primary-color-one);
+  background-color: var(--neutral-dark);
+  border: solid 2px var(--primary-color-one);
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  cursor:pointer;
+
+}
+.home_button{
+  width: 190px;
+  text-decoration: none;
+  cursor:pointer;
+  border-radius: 25px;
 }

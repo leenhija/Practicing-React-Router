@@ -27,14 +27,10 @@ function EventItem({ eventId }) {
       throw new Error({message:error.message || 'an error occured'})
     }
   }
-// try{
-//  const eventData= fetchData();
+
 fetchData()
  
-//  setEvent(eventData)
-// }catch(error){
-//   throw new Error({message:error.message || 'an error occured'})
-// }
+
  },[])
   return (
     <article className={classes.event}>
