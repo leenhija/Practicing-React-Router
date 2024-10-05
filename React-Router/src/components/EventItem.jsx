@@ -6,12 +6,14 @@ import { useDispatch  } from 'react-redux';
 import { useEffect, useState } from 'react';
 function EventItem({ eventId }) {
  const [event , setEvent]=useState({})
+ const userEmail=useSelector(state => state.user.userEmail);
+
   const dispatch=useDispatch()
   const navigate=useNavigate()
   function startDeleteHandler() {
-    dispatch(DeleteEvent(eventId))
-    navigate("/events/allevents");
-
+      dispatch(DeleteEvent(eventId))
+      navigate("/events/allevents");
+   
   }
  useEffect(()=>{
   const fetchData=async()=>{
@@ -36,11 +38,12 @@ fetchData()
     <article className={classes.event}>
       <img src={event.image} alt={event.title} />
       <h1>{event.title}</h1>
+      <p className={classes.email}>{event.email}</p>
       <time>{event.date}</time>
       <p>{event.description}</p>
       <menu className={classes.actions}>
-        <Link to={`edit/${event.id}`}>Edit</Link>
-        <button onClick={startDeleteHandler}>Delete</button>
+       {userEmail===event.email&& <Link to={`edit/${event.id}`}>Edit</Link>}
+       {userEmail===event.email&& <button onClick={startDeleteHandler}>Delete</button>}
       </menu>
     </article>
   );

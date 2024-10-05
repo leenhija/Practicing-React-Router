@@ -1,13 +1,21 @@
 import classes from "./MainNavigation.module.css";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/pets_logo.png";
+import logo from "../assets/developers-gathering-high-resolution-logo-transparent.png";
+import { useSelector , useDispatch } from "react-redux";
+import {userActions} from '../store/user'
 function MainNavigation() {
+  const isloggedin=useSelector(state => state.user.isloggedin);
+  const userEmail=useSelector(state => state.user.userEmail);
+  const dispatch=useDispatch();
+  function handleLogout(){
+   dispatch(userActions.logout())
+  }
   return (
     <>
       <header className={classes.header}>
         <div>
           <img src={logo} alt="pets word" />
-          <h2>PETS WORLD</h2>
+          <h2>Developers Gathering</h2>
         </div>
         <nav>
           <ul className={classes.list}>
@@ -35,11 +43,11 @@ function MainNavigation() {
             </li>
           </ul>
         </nav>
-        <nav>
+       {!isloggedin && <nav>
           <ul className={classes.regester}>
             <li>
               <NavLink
-                to="/"
+                to="/signup"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
@@ -50,7 +58,7 @@ function MainNavigation() {
             </li>
             <li>
               <NavLink
-                to="events/allevents"
+                to="/login"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
@@ -60,7 +68,13 @@ function MainNavigation() {
               </NavLink>
             </li>
           </ul>
-        </nav>
+        </nav>}
+        {isloggedin && 
+        <div className={classes.logout}>
+          <p>{userEmail}</p>
+          <button className={classes.logoutButton} onClick={handleLogout}>logout</button>
+        </div>
+       }
       </header>
       {/* <Outlet/> */}
     </>

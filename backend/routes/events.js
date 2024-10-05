@@ -5,6 +5,7 @@ const {
   isValidText,
   isValidDate,
   isValidImageUrl,
+  isValidEmail
 } = require('../util/validation');
 
 const router = express.Router();
@@ -46,7 +47,9 @@ router.post('/', async (req, res, next) => {
   if (!isValidImageUrl(data.image)) {
     errors.image = 'Invalid image.';
   }
-
+  if (!isValidEmail(data.email)) {
+    errors.email = 'Invalid email.';
+  }
   if (Object.keys(errors).length > 0) {
     return res.status(422).json({
       message: 'Adding the event failed due to validation errors.',

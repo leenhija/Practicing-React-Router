@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { EditEvent } from "../store/eventActions";
 function EventForm({ method, eventId }) {
   const navigate = useNavigate();
+  const isloggedin=useSelector(state => state.user.isloggedin);
   const events = useSelector((state) => state.events.events);
   const event = events.find((event) => event.id == eventId);
   const dispatch = useDispatch();
@@ -13,6 +14,10 @@ function EventForm({ method, eventId }) {
   }
   function submitHandler(event) {
     event.preventDefault();
+    if(!isloggedin){
+      navigate('/login');
+      return
+    }
     const fd = new FormData(event.target);
     const newEvent = Object.fromEntries(fd.entries());
     dispatch(addNewEvent(newEvent));
@@ -30,6 +35,17 @@ function EventForm({ method, eventId }) {
       className={classes.form}
       onSubmit={method == "add" ? submitHandler : editHandler}
     >
+       <p>
+        <label htmlFor="email">email</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          required={method == "add" ? true : false}
+          placeholder={method==='edit'?event.email:''}
+          
+        />
+      </p>
       <p>
         <label htmlFor="title">Title</label>
         <input

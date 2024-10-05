@@ -10,7 +10,12 @@ function isValidDate(value) {
 function isValidImageUrl(value) {
   return value && value.startsWith('http');
 }
-
+function isValidEmail(value){
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,7}$/;
+  
+  return emailRegex.test(value);
+}
 exports.isValidText = isValidText;
 exports.isValidDate = isValidDate;
 exports.isValidImageUrl = isValidImageUrl;
+exports.isValidEmail=isValidEmail;

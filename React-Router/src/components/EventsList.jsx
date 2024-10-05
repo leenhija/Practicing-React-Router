@@ -12,6 +12,7 @@ function EventsList() {
             <Link to={event.id}>
               <img src={event.image} alt={event.title} />
               <div className={classes.content}>
+              <p>{event.email}</p>
                 <h2>{event.title}</h2>
                 <time>{event.date}</time>
               </div>

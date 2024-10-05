@@ -29,6 +29,8 @@ import EventsRoot from './Pages/EvetsRoot.jsx'
 import EventDetailPage from './Pages/EventDetailPage.jsx'
 import NewEventPage from './Pages/NewEventPage.jsx'
 import EditEventPage from './Pages/EditEventPage.jsx'
+import SignupPage from './Pages/SignupPage.jsx'
+import LoginPage from './Pages/LoginPage.jsx'
 
 const router=createBrowserRouter([
   {path:'/' , element:<RootLayout/>,errorElement:<ErrorPage/>,
@@ -40,7 +42,9 @@ const router=createBrowserRouter([
         {path:'new', element:<NewEventPage/>},
         {path:'allevents/:id/edit/:id', element:<EditEventPage/>}
 
-      ]}
+      ]},
+      {path:'/signup',element:<SignupPage/>},
+      {path:'/login',element:<LoginPage/>}
     ]
   },
   
