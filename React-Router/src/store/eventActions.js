@@ -19,12 +19,12 @@ export const fetchEventsData=()=>{
         }
     }
 }
-export const addNewEvent=(newEvent)=>{
+export const addNewEvent=(newEvent , email)=>{
     return async dispatch=>{
         const AddhNewData=async()=>{
             const response=await fetch('http://localhost:8080/events',{
                 method:'POST',
-                body:JSON.stringify(newEvent),
+                body:JSON.stringify({...newEvent,'email':email}),
                 headers: {
                     'Content-Type': 'application/json', 
                   },

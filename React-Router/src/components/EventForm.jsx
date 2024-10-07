@@ -6,6 +6,7 @@ import { EditEvent } from "../store/eventActions";
 function EventForm({ method, eventId }) {
   const navigate = useNavigate();
   const isloggedin=useSelector(state => state.user.isloggedin);
+  const email=useSelector(state => state.user.userEmail)
   const events = useSelector((state) => state.events.events);
   const event = events.find((event) => event.id == eventId);
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function EventForm({ method, eventId }) {
     }
     const fd = new FormData(event.target);
     const newEvent = Object.fromEntries(fd.entries());
-    dispatch(addNewEvent(newEvent));
+    dispatch(addNewEvent(newEvent , email));
     navigate("/events/allevents");
   }
   function editHandler(event) {
@@ -35,17 +36,6 @@ function EventForm({ method, eventId }) {
       className={classes.form}
       onSubmit={method == "add" ? submitHandler : editHandler}
     >
-       <p>
-        <label htmlFor="email">email</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          required={method == "add" ? true : false}
-          placeholder={method==='edit'?event.email:''}
-          
-        />
-      </p>
       <p>
         <label htmlFor="title">Title</label>
         <input
@@ -53,7 +43,7 @@ function EventForm({ method, eventId }) {
           type="text"
           name="title"
           required={method == "add" ? true : false}
-          placeholder={method==='edit'?event.title:''}
+          defaultValue={method==='edit'?event.title:''}
           
         />
       </p>
@@ -64,7 +54,7 @@ function EventForm({ method, eventId }) {
           type="url"
           name="image"
           required={method == "add" ? true : false}
-          placeholder={method==='edit'?event.image:''}
+          defaultValue={method==='edit'?event.image:''}
         />
       </p>
       <p>
@@ -74,7 +64,7 @@ function EventForm({ method, eventId }) {
           type="date"
           name="date"
           required={method == "add" ? true : false}
-          placeholder={method==='edit'?event.date:''}
+          defaultValue={method==='edit'?event.date:''}
         />
       </p>
       <p>
@@ -84,7 +74,7 @@ function EventForm({ method, eventId }) {
           name="description"
           rows="5"
           required={method == "add" ? true : false}
-          placeholder={method==='edit'?event.description:''}
+          defaultValue={method==='edit'?event.description:''}
         />
       </p>
       <div className={classes.actions}>
